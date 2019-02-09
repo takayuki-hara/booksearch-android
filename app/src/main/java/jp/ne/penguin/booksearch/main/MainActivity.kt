@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import jp.ne.penguin.booksearch.R
+import jp.ne.penguin.booksearch.mypage.MypageFragment
 import jp.ne.penguin.booksearch.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                val fragment = SearchFragment.newInstance()
+                val fragment = MypageFragment.newInstance()
                 supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
                 return@OnNavigationItemSelectedListener true
             }
@@ -41,6 +42,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        // 起動時は検索画面を開いておく
+        val fragment = SearchFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
