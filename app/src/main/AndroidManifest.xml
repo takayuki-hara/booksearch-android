@@ -27,6 +27,7 @@
             android:name=".user.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".user.EditUserActivity" />
+        <activity android:name=".result.SearchResultListActivity" />
     </application>
 
 </manifest>
