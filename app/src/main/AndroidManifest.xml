@@ -25,7 +25,8 @@
         <activity android:name=".common.WebContentActivity" />
         <activity
             android:name=".user.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity android:name=".user.EditUserActivity" />
     </application>
 
 </manifest>
