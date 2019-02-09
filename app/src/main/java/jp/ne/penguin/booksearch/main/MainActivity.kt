@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import jp.ne.penguin.booksearch.R
+import jp.ne.penguin.booksearch.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -18,15 +19,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                message.setText(R.string.title_home)
+                val fragment = SearchFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
+                val fragment = SearchFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
+                val fragment = SearchFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
                 return@OnNavigationItemSelectedListener true
             }
         }
