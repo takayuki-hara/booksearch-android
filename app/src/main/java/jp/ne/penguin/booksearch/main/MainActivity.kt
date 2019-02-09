@@ -1,4 +1,4 @@
-package jp.ne.penguin.booksearch
+package jp.ne.penguin.booksearch.main
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -8,6 +8,10 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import jp.ne.penguin.booksearch.R
+import jp.ne.penguin.booksearch.mypage.MypageFragment
+import jp.ne.penguin.booksearch.search.SearchFragment
+import jp.ne.penguin.booksearch.watch.WatchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -17,15 +21,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                message.setText(R.string.title_home)
+                val fragment = SearchFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
+                val fragment = MypageFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
+                val fragment = WatchFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -36,6 +43,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        // 起動時は検索画面を開いておく
+        val fragment = SearchFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
