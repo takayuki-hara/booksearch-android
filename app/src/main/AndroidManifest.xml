@@ -23,6 +23,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".common.WebContentActivity" />
+        <activity
+            android:name=".user.LoginActivity"
+            android:label="@string/title_activity_login"></activity>
     </application>
 
 </manifest>
