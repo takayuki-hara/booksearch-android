@@ -11,6 +11,7 @@ import android.view.MenuItem
 import jp.ne.penguin.booksearch.R
 import jp.ne.penguin.booksearch.mypage.MypageFragment
 import jp.ne.penguin.booksearch.search.SearchFragment
+import jp.ne.penguin.booksearch.watch.WatchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                val fragment = SearchFragment.newInstance()
+                val fragment = WatchFragment.newInstance()
                 supportFragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit()
                 return@OnNavigationItemSelectedListener true
             }
