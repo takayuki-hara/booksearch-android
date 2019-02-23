@@ -12,4 +12,12 @@ class BookSearchRepository {
         // APIで取得する
         return BookSearchApiClient().login(name, pass)
     }
+
+    fun users(): Single<List<User>> {
+        return BookSearchApiClient().users(getToken())
+    }
+
+    private fun getToken(): String {
+        return "Bearer XXX"
+    }
 }
