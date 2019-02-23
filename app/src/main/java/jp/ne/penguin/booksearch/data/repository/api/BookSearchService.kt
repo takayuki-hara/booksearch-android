@@ -1,0 +1,20 @@
+package jp.ne.penguin.booksearch.data.repository.api
+
+import io.reactivex.Single
+import jp.ne.penguin.booksearch.data.entity.User
+import retrofit2.http.*
+
+interface BookSearchService {
+    companion object {
+        const val BASE_URL = "http://booksearch-bunl25ft.herokuapp.com/"
+    }
+
+
+    @Headers(
+        "Accept: application/json",
+        "Content-type: application/json"
+    )
+
+    @POST("api/v1/users/login")
+    fun login(@Body body: UserRequestModel): Single<User>
+}
