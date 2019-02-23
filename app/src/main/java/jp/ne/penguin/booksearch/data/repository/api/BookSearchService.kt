@@ -21,4 +21,10 @@ interface BookSearchService {
     @GET("api/v1/users")
     fun users(@Header("Authorization") token: String): Single<List<User>>
 
+    @GET("api/v1/search")
+    fun search(
+            @Header("Authorization") token: String,
+            @Query("keywd") keyword: String,
+            @Query("page") page: Int,
+            @Query("genre") genre: String): Single<BookSearchResponse>
 }

@@ -23,4 +23,8 @@ class BookSearchApiClient {
     fun users(token: String): Single<List<User>> {
         return service.users(token)
     }
+
+    fun search(token: String, keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
+        return service.search(token, keyword, page, genre)
+    }
 }
