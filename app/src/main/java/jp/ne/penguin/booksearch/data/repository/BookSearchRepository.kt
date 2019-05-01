@@ -14,8 +14,8 @@ class BookSearchRepository {
         return BookSearchApiClient().login(name, pass)
     }
 
-    fun users(): Single<List<User>> {
-        return BookSearchApiClient().users(getToken())
+    fun getUsers(): Single<List<User>> {
+        return BookSearchApiClient().getUsers(getToken())
     }
 
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
@@ -23,6 +23,7 @@ class BookSearchRepository {
     }
 
     private fun getToken(): String {
+        // TODO: 初回ログイン時にDB登録しておいて、あとはDBから読むようにする（ログアウト時に削除）
         return "Bearer XXX"
     }
 }
