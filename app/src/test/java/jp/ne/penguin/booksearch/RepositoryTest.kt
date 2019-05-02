@@ -22,6 +22,21 @@ class RepositoryTest {
     }
 
     @Test
+    fun test_login() {
+        val result = BookSearchRepository().login("user", "user")
+                .subscribeOn(Schedulers.io())
+                .test()
+                .await()
+                .assertNoErrors()
+                .assertComplete()
+                .values().get(0)
+        println(result)
+
+        // ココは必要に応じて調整する
+        Assert.assertEquals(result.id, 2)
+    }
+
+    @Test
     fun test_getUsers() {
         val result = BookSearchRepository().getUsers()
                 .subscribeOn(Schedulers.io())
@@ -36,4 +51,18 @@ class RepositoryTest {
         Assert.assertEquals(result.get(0).id, 2)
     }
 
+    @Test
+    fun test_search() {
+        val result = BookSearchRepository().search("swift", 1, "001005")
+                .subscribeOn(Schedulers.io())
+                .test()
+                .await()
+                .assertNoErrors()
+                .assertComplete()
+                .values().get(0)
+        println(result)
+
+        // ココは必要に応じて調整する
+        Assert.assertEquals(result.count, 41)
+    }
 }
