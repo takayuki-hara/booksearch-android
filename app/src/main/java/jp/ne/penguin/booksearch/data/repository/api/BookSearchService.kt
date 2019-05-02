@@ -16,7 +16,7 @@ interface BookSearchService {
     )
 
     @POST("api/v1/users/login")
-    fun login(@Body body: UserRequestModel): Single<User>
+    fun login(@Body body: LoginRequestModel): Single<User>
 
     @GET("api/v1/users")
     fun getUsers(@Header("Authorization") token: String): Single<List<User>>

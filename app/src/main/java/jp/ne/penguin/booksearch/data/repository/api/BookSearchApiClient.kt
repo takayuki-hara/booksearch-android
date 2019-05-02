@@ -17,7 +17,7 @@ class BookSearchApiClient {
     }
 
     fun login(name: String, pass: String): Single<User> {
-        return service.login(UserRequestModel(name, pass))
+        return service.login(LoginRequestModel(name, pass))
     }
 
     fun getUsers(): Single<List<User>> {
