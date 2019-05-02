@@ -59,5 +59,11 @@ interface BookSearchService {
             @Header("Authorization") token: String,
             @Body body: KeywordRequestModel): Single<Keyword>
 
+    @PUT("api/v1/keywords/{id}")
+    fun updateKeyword(
+            @Header("Authorization") token: String,
+            @Path("id") keywordId: Int,
+            @Body body: KeywordRequestModel): Single<Keyword>
+
 
 }

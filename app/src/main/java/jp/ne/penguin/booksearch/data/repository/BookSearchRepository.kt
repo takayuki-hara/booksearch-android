@@ -51,4 +51,8 @@ class BookSearchRepository {
         return BookSearchApiClient().registKeyword(keyword, genre)
     }
 
+    fun updateKeyword(keywordId: Int, keyword: String, genre: String): Single<Keyword> {
+        return BookSearchApiClient().updateKeyword(keywordId, keyword, genre)
+    }
+
 }

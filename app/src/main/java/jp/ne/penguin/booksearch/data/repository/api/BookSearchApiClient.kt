@@ -57,6 +57,10 @@ class BookSearchApiClient {
         return service.registKeyword(getToken(), KeywordRequestModel(keyword, genre))
     }
 
+    fun updateKeyword(keywordId: Int, keyword: String, genre: String): Single<Keyword> {
+        return service.updateKeyword(getToken(), keywordId, KeywordRequestModel(keyword, genre))
+    }
+
 
     private fun getToken(): String {
         // TODO: 初回ログイン時にDB登録しておいて、あとはDBから読むようにする（ログアウト時に削除）
