@@ -20,11 +20,21 @@ class BookSearchApiClient {
         return service.login(UserRequestModel(name, pass))
     }
 
-    fun getUsers(token: String): Single<List<User>> {
-        return service.getUsers(token)
+    fun getUsers(): Single<List<User>> {
+        return service.getUsers(getToken())
     }
 
-    fun search(token: String, keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
-        return service.search(token, keyword, page, genre)
+    fun getMe(): Single<User> {
+        return service.getMe(getToken())
+    }
+
+    fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
+        return service.search(getToken(), keyword, page, genre)
+    }
+
+
+    private fun getToken(): String {
+        // TODO: 初回ログイン時にDB登録しておいて、あとはDBから読むようにする（ログアウト時に削除）
+        return "Bearer XXX"
     }
 }
