@@ -38,6 +38,11 @@ interface BookSearchService {
             @Path("id") userId: Int,
             @Body body: UserRequestModel): Single<User>
 
+    @DELETE("api/v1/users/{id}")
+    fun deleteUser(
+            @Header("Authorization") token: String,
+            @Path("id") userId: Int): Single<String>
+
     @GET("api/v1/search")
     fun search(
             @Header("Authorization") token: String,

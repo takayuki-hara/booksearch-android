@@ -40,6 +40,10 @@ class BookSearchApiClient {
         return service.updateUser(getToken(), userId, UserRequestModel(name, pass, pass, email, getFcmToken(), enableEmail, enableFcm))
     }
 
+    fun deleteUser(userId: Int): Single<String> {
+        return service.deleteUser(getToken(), userId)
+    }
+
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
         return service.search(getToken(), keyword, page, genre)
     }

@@ -34,6 +34,10 @@ class BookSearchRepository {
         return BookSearchApiClient().updateUser(userId, name, pass, email, enableEmail, enableFcm)
     }
 
+    fun deleteUser(userId: Int): Single<String> {
+        return BookSearchApiClient().deleteUser(userId)
+    }
+
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
         return BookSearchApiClient().search(keyword, page, genre)
     }
