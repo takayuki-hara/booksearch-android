@@ -65,4 +65,10 @@ class BookSearchRepository {
         return BookSearchApiClient().getFavorites()
     }
 
+    fun registFavorite(title: String, price: Int, genres: String,author: String,
+                       publisher: String, isbn: String,caption: String, salesDate: String,
+                       itemUrl: String, largeimageUrl: String): Single<Favorite> {
+        return BookSearchApiClient().registFavorite(title, price, genres, author, publisher, isbn, caption, salesDate, itemUrl, largeimageUrl)
+    }
+
 }

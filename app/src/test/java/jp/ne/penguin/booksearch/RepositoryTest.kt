@@ -213,8 +213,22 @@ class RepositoryTest {
         println(result)
 
         // ココは必要に応じて調整する
-        Assert.assertEquals(result.get(0).userId, 1)
+        Assert.assertEquals(result.get(0).userId, 2)
     }
 
+    @Test
+    fun test_registFavorite() {
+        val result = BookSearchRepository().registFavorite("Androidスマートフォン", 1188, "001005", "none", "", "", "", "2019年02月", "", "")
+                .subscribeOn(Schedulers.io())
+                .test()
+                .await()
+                .assertNoErrors()
+                .assertComplete()
+                .values().get(0)
+        println(result)
+
+        // ココは必要に応じて調整する
+        Assert.assertEquals(result.userId, 2)
+    }
 
 }

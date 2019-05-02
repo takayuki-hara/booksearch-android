@@ -75,5 +75,10 @@ interface BookSearchService {
     @GET("api/v1/favorites")
     fun getFavorites(@Header("Authorization") token: String): Single<List<Favorite>>
 
+    @POST("api/v1/favorites")
+    fun registFavorite(
+            @Header("Authorization") token: String,
+            @Body body: FavoriteRequestModel): Single<Favorite>
+
 
 }

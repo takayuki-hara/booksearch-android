@@ -71,6 +71,11 @@ class BookSearchApiClient {
         return service.getFavorites(getToken())
     }
 
+    fun registFavorite(title: String, price: Int, genres: String, author: String,
+                       publisher: String, isbn: String, caption: String, salesDate: String,
+                       itemUrl: String, largeimageUrl: String): Single<Favorite> {
+        return service.registFavorite(getToken(), FavoriteRequestModel(title, price, genres, author, publisher, isbn, caption, salesDate, itemUrl, largeimageUrl))
+    }
 
     private fun getToken(): String {
         // TODO: 初回ログイン時にDB登録しておいて、あとはDBから読むようにする（ログアウト時に削除）
