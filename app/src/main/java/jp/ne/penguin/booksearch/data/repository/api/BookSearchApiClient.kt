@@ -36,6 +36,10 @@ class BookSearchApiClient {
         return service.createUser(UserRequestModel(name, pass, pass, email, getFcmToken(), enableEmail, enableFcm))
     }
 
+    fun updateUser(userId: Int, name: String, pass: String, email: String, enableEmail: Boolean, enableFcm: Boolean): Single<User> {
+        return service.updateUser(getToken(), userId, UserRequestModel(name, pass, pass, email, getFcmToken(), enableEmail, enableFcm))
+    }
+
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
         return service.search(getToken(), keyword, page, genre)
     }

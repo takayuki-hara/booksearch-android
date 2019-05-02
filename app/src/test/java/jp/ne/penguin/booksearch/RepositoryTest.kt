@@ -97,6 +97,21 @@ class RepositoryTest {
     }
 
     @Test
+    fun test_updateUser() {
+        val result = BookSearchRepository().updateUser(37,"test3","test2","test@gmal.com",true,true)
+                .subscribeOn(Schedulers.io())
+                .test()
+                .await()
+                .assertNoErrors()
+                .assertComplete()
+                .values().get(0)
+        println(result)
+
+        // ココは必要に応じて調整する
+        Assert.assertEquals(result.username, "test2")
+    }
+
+    @Test
     fun test_search() {
         val result = BookSearchRepository().search("swift", 1, "001005")
                 .subscribeOn(Schedulers.io())

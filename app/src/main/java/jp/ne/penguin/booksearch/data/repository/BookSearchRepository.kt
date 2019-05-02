@@ -30,6 +30,10 @@ class BookSearchRepository {
         return BookSearchApiClient().createUser(name, pass, email, enableEmail, enableFcm)
     }
 
+    fun updateUser(userId: Int, name: String, pass: String, email: String, enableEmail: Boolean, enableFcm: Boolean): Single<User> {
+        return BookSearchApiClient().updateUser(userId, name, pass, email, enableEmail, enableFcm)
+    }
+
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
         return BookSearchApiClient().search(keyword, page, genre)
     }

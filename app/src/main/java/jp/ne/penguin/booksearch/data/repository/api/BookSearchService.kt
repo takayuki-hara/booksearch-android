@@ -32,6 +32,12 @@ interface BookSearchService {
     @POST("api/v1/users")
     fun createUser(@Body body: UserRequestModel): Single<User>
 
+    @PUT("api/v1/users/{id}")
+    fun updateUser(
+            @Header("Authorization") token: String,
+            @Path("id") userId: Int,
+            @Body body: UserRequestModel): Single<User>
+
     @GET("api/v1/search")
     fun search(
             @Header("Authorization") token: String,
