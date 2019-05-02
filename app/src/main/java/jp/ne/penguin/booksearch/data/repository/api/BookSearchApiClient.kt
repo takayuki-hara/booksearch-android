@@ -28,6 +28,10 @@ class BookSearchApiClient {
         return service.getMe(getToken())
     }
 
+    fun getUser(userId: Int): Single<User> {
+        return service.getUser(getToken(), userId)
+    }
+
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
         return service.search(getToken(), keyword, page, genre)
     }

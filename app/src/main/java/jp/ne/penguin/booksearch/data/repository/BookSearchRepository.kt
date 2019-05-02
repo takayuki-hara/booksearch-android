@@ -22,6 +22,10 @@ class BookSearchRepository {
         return BookSearchApiClient().getMe()
     }
 
+    fun getUser(id: Int): Single<User> {
+        return BookSearchApiClient().getUser(id)
+    }
+
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
         return BookSearchApiClient().search(keyword, page, genre)
     }
