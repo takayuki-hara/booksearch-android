@@ -32,6 +32,10 @@ class BookSearchApiClient {
         return service.getUser(getToken(), userId)
     }
 
+    fun createUser(name: String, pass: String, email: String, enableEmail: Boolean, enableFcm: Boolean): Single<User> {
+        return service.createUser(UserRequestModel(name, pass, pass, email, getFcmToken(), enableEmail, enableFcm))
+    }
+
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
         return service.search(getToken(), keyword, page, genre)
     }
@@ -40,5 +44,9 @@ class BookSearchApiClient {
     private fun getToken(): String {
         // TODO: 初回ログイン時にDB登録しておいて、あとはDBから読むようにする（ログアウト時に削除）
         return "Bearer XXX"
+
+    private fun getFcmToken(): String {
+        // TODO: 初期化時に取得してDB登録しておく
+        return "ABCDEFG0123456789"
     }
 }
