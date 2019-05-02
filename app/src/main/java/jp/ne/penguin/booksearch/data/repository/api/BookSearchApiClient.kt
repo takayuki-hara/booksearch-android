@@ -2,6 +2,7 @@ package jp.ne.penguin.booksearch.data.repository.api
 
 import io.reactivex.Single
 import jp.ne.penguin.booksearch.data.entity.Keyword
+import jp.ne.penguin.booksearch.data.entity.Message
 import jp.ne.penguin.booksearch.data.entity.User
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -41,7 +42,7 @@ class BookSearchApiClient {
         return service.updateUser(getToken(), userId, UserRequestModel(name, pass, pass, email, getFcmToken(), enableEmail, enableFcm))
     }
 
-    fun deleteUser(userId: Int): Single<String> {
+    fun deleteUser(userId: Int): Single<Message> {
         return service.deleteUser(getToken(), userId)
     }
 
@@ -59,6 +60,10 @@ class BookSearchApiClient {
 
     fun updateKeyword(keywordId: Int, keyword: String, genre: String): Single<Keyword> {
         return service.updateKeyword(getToken(), keywordId, KeywordRequestModel(keyword, genre))
+    }
+
+    fun deleteKeyword(keywordId: Int): Single<Message> {
+        return service.deleteKeyword(getToken(), keywordId)
     }
 
 

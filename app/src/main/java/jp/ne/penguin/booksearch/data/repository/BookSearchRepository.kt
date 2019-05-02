@@ -2,6 +2,7 @@ package jp.ne.penguin.booksearch.data.repository
 
 import io.reactivex.Single
 import jp.ne.penguin.booksearch.data.entity.Keyword
+import jp.ne.penguin.booksearch.data.entity.Message
 import jp.ne.penguin.booksearch.data.entity.User
 import jp.ne.penguin.booksearch.data.repository.api.BookSearchApiClient
 import jp.ne.penguin.booksearch.data.repository.api.BookSearchResponse
@@ -35,7 +36,7 @@ class BookSearchRepository {
         return BookSearchApiClient().updateUser(userId, name, pass, email, enableEmail, enableFcm)
     }
 
-    fun deleteUser(userId: Int): Single<String> {
+    fun deleteUser(userId: Int): Single<Message> {
         return BookSearchApiClient().deleteUser(userId)
     }
 
@@ -53,6 +54,10 @@ class BookSearchRepository {
 
     fun updateKeyword(keywordId: Int, keyword: String, genre: String): Single<Keyword> {
         return BookSearchApiClient().updateKeyword(keywordId, keyword, genre)
+    }
+
+    fun deleteKeyword(keywordId: Int): Single<Message> {
+        return BookSearchApiClient().deleteKeyword(keywordId)
     }
 
 }

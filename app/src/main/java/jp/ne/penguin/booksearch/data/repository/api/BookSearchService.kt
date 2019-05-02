@@ -2,6 +2,7 @@ package jp.ne.penguin.booksearch.data.repository.api
 
 import io.reactivex.Single
 import jp.ne.penguin.booksearch.data.entity.Keyword
+import jp.ne.penguin.booksearch.data.entity.Message
 import jp.ne.penguin.booksearch.data.entity.User
 import retrofit2.http.*
 
@@ -42,7 +43,7 @@ interface BookSearchService {
     @DELETE("api/v1/users/{id}")
     fun deleteUser(
             @Header("Authorization") token: String,
-            @Path("id") userId: Int): Single<String>
+            @Path("id") userId: Int): Single<Message>
 
     @GET("api/v1/search")
     fun search(
@@ -64,6 +65,11 @@ interface BookSearchService {
             @Header("Authorization") token: String,
             @Path("id") keywordId: Int,
             @Body body: KeywordRequestModel): Single<Keyword>
+
+    @DELETE("api/v1/keywords/{id}")
+    fun deleteKeyword(
+            @Header("Authorization") token: String,
+            @Path("id") keywordsId: Int): Single<Message>
 
 
 }
