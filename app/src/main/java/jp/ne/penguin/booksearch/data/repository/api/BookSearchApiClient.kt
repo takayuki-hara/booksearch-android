@@ -53,6 +53,11 @@ class BookSearchApiClient {
         return service.getKeywords(getToken())
     }
 
+    fun registKeyword(keyword: String, genre: String): Single<Keyword> {
+        return service.registKeyword(getToken(), KeywordRequestModel(keyword, genre))
+    }
+
+
     private fun getToken(): String {
         // TODO: 初回ログイン時にDB登録しておいて、あとはDBから読むようにする（ログアウト時に削除）
         return "Bearer XXX"

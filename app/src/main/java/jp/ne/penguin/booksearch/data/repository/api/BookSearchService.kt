@@ -50,4 +50,14 @@ interface BookSearchService {
             @Query("keywd") keyword: String,
             @Query("page") page: Int,
             @Query("genre") genre: String): Single<BookSearchResponse>
+
+    @GET("api/v1/keywords")
+    fun getKeywords(@Header("Authorization") token: String): Single<List<Keyword>>
+
+    @POST("api/v1/keywords")
+    fun registKeyword(
+            @Header("Authorization") token: String,
+            @Body body: KeywordRequestModel): Single<Keyword>
+
+
 }

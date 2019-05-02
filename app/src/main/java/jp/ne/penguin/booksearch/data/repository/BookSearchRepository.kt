@@ -47,4 +47,8 @@ class BookSearchRepository {
         return BookSearchApiClient().getKeywords()
     }
 
+    fun registKeyword(keyword: String, genre: String): Single<Keyword> {
+        return BookSearchApiClient().registKeyword(keyword, genre)
+    }
+
 }

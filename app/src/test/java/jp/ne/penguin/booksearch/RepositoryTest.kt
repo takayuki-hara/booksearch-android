@@ -156,5 +156,20 @@ class RepositoryTest {
         Assert.assertEquals(result.get(0).keyword, "android")
     }
 
+    @Test
+    fun test_registKeyword() {
+        val result = BookSearchRepository().registKeyword("test", "001005")
+                .subscribeOn(Schedulers.io())
+                .test()
+                .await()
+                .assertNoErrors()
+                .assertComplete()
+                .values().get(0)
+        println(result)
+
+        // ココは必要に応じて調整する
+        Assert.assertEquals(result.keyword, "test")
+    }
+
 
 }
