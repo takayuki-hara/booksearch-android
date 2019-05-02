@@ -1,6 +1,7 @@
 package jp.ne.penguin.booksearch.data.repository.api
 
 import io.reactivex.Single
+import jp.ne.penguin.booksearch.data.entity.Keyword
 import jp.ne.penguin.booksearch.data.entity.User
 import retrofit2.http.*
 

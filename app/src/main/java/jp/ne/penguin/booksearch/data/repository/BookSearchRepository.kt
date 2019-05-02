@@ -1,6 +1,7 @@
 package jp.ne.penguin.booksearch.data.repository
 
 import io.reactivex.Single
+import jp.ne.penguin.booksearch.data.entity.Keyword
 import jp.ne.penguin.booksearch.data.entity.User
 import jp.ne.penguin.booksearch.data.repository.api.BookSearchApiClient
 import jp.ne.penguin.booksearch.data.repository.api.BookSearchResponse
@@ -40,6 +41,10 @@ class BookSearchRepository {
 
     fun search(keyword: String, page: Int, genre: String): Single<BookSearchResponse> {
         return BookSearchApiClient().search(keyword, page, genre)
+    }
+
+    fun getKeywords(): Single<List<Keyword>> {
+        return BookSearchApiClient().getKeywords()
     }
 
 }

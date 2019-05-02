@@ -1,6 +1,7 @@
 package jp.ne.penguin.booksearch.data.repository.api
 
 import io.reactivex.Single
+import jp.ne.penguin.booksearch.data.entity.Keyword
 import jp.ne.penguin.booksearch.data.entity.User
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -48,6 +49,9 @@ class BookSearchApiClient {
         return service.search(getToken(), keyword, page, genre)
     }
 
+    fun getKeywords(): Single<List<Keyword>> {
+        return service.getKeywords(getToken())
+    }
 
     private fun getToken(): String {
         // TODO: 初回ログイン時にDB登録しておいて、あとはDBから読むようにする（ログアウト時に削除）

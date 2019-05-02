@@ -140,4 +140,21 @@ class RepositoryTest {
         // ココは必要に応じて調整する
         Assert.assertEquals(result.count, 41)
     }
+
+    @Test
+    fun test_getKeywords() {
+        val result = BookSearchRepository().getKeywords()
+                .subscribeOn(Schedulers.io())
+                .test()
+                .await()
+                .assertNoErrors()
+                .assertComplete()
+                .values().get(0)
+        println(result)
+
+        // ココは必要に応じて調整する
+        Assert.assertEquals(result.get(0).keyword, "android")
+    }
+
+
 }
