@@ -1,6 +1,7 @@
 package jp.ne.penguin.booksearch.data.repository.api
 
 import io.reactivex.Single
+import jp.ne.penguin.booksearch.data.entity.Favorite
 import jp.ne.penguin.booksearch.data.entity.Keyword
 import jp.ne.penguin.booksearch.data.entity.Message
 import jp.ne.penguin.booksearch.data.entity.User
@@ -70,6 +71,9 @@ interface BookSearchService {
     fun deleteKeyword(
             @Header("Authorization") token: String,
             @Path("id") keywordsId: Int): Single<Message>
+
+    @GET("api/v1/favorites")
+    fun getFavorites(@Header("Authorization") token: String): Single<List<Favorite>>
 
 
 }

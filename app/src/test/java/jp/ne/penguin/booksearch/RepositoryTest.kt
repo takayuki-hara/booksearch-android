@@ -201,5 +201,20 @@ class RepositoryTest {
         Assert.assertEquals(result.message.get(0), "削除しました")
     }
 
+    @Test
+    fun test_getFavorites() {
+        val result = BookSearchRepository().getFavorites()
+                .subscribeOn(Schedulers.io())
+                .test()
+                .await()
+                .assertNoErrors()
+                .assertComplete()
+                .values().get(0)
+        println(result)
+
+        // ココは必要に応じて調整する
+        Assert.assertEquals(result.get(0).userId, 1)
+    }
+
 
 }
