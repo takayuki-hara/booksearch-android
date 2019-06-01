@@ -70,7 +70,7 @@ interface BookSearchService {
     @DELETE("api/v1/keywords/{id}")
     fun deleteKeyword(
             @Header("Authorization") token: String,
-            @Path("id") keywordsId: Int): Single<Message>
+            @Path("id") keywordId: Int): Single<Message>
 
     @GET("api/v1/favorites")
     fun getFavorites(@Header("Authorization") token: String): Single<List<Favorite>>
@@ -80,5 +80,8 @@ interface BookSearchService {
             @Header("Authorization") token: String,
             @Body body: FavoriteRequestModel): Single<Favorite>
 
-
+    @DELETE("api/v1/favorites/{id}")
+    fun deleteFavorite(
+            @Header("Authorization") token: String,
+            @Path("id") favoriteId: Int): Single<Message>
 }

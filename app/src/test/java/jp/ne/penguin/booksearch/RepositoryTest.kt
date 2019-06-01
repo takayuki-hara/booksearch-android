@@ -231,4 +231,19 @@ class RepositoryTest {
         Assert.assertEquals(result.userId, 2)
     }
 
+    @Test
+    fun test_deleteFavorite() {
+        val result = BookSearchRepository().deleteFavorite(44)
+                .subscribeOn(Schedulers.io())
+                .test()
+                .await()
+                .assertNoErrors()
+                .assertComplete()
+                .values().get(0)
+        println(result)
+
+        // ココは必要に応じて調整する
+        Assert.assertEquals(result.message.get(0), "削除しました")
+    }
+
 }

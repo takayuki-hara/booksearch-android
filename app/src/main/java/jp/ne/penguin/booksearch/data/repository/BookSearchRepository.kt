@@ -71,4 +71,8 @@ class BookSearchRepository {
         return BookSearchApiClient().registFavorite(title, price, genres, author, publisher, isbn, caption, salesDate, itemUrl, largeimageUrl)
     }
 
+    fun deleteFavorite(favoriteId: Int): Single<Message> {
+        return BookSearchApiClient().deleteFavorite(favoriteId)
+    }
+
 }
