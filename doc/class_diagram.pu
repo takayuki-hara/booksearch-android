@@ -1,0 +1,146 @@
+@startuml
+
+note bottom of android: Andorid SDK
+package android {
+    class Application {
+    }
+    class AppCompatActivity {
+    }
+    class Fragment {
+    }
+    class FragmentPagerAdapter {
+    }
+    interface NavigationView.OnNavigationItemSelectedListener {
+    }
+}
+
+package jp.ne.penguin.booksearch {
+    package app {
+        class BookSearchApplication {
+            Context applicationContext()
+        }
+        Application <|-- BookSearchApplication
+    }
+
+    package common {
+        class WebContentActivity {
+        }
+        AppCompatActivity <|-- WebContentActivity
+    }
+    package data {
+        package entity {
+            class Book {
+            }
+            class User {
+            }
+        }
+        package repository {
+            package api {
+                class BookSearchApiClient {
+                    Single<User> login()
+                    Single<List<User>> users()
+                    Single<BookSearchResponse> search()
+                }
+                class BookSearchResponse {
+                }
+                class BookSearchService {
+                }
+                class UserRequestModel {
+                }
+                BookSearchService -- UserRequestModel
+                BookSearchService -- BookSearchResponse
+            }
+            class BookSearchRepository {
+                Single<User> login()
+                Single<List<User>> users()
+                Single<BookSearchResponse> search()
+            }
+        }
+    }
+    package main {
+        class MainActivity {
+        }
+        AppCompatActivity <|-- MainActivity
+        NavigationView.OnNavigationItemSelectedListener <|-- MainActivity
+    }
+    package mypage {
+        class MypageFragment {
+        }
+        class FavoriteFragment {
+        }
+        class HistoryFragment {
+        }
+        class MypageFragmentPagerAdapter {
+            Fragment getItem()
+            int getCount()
+            CharSequence? getPageTitle()
+            void refresh()
+        }
+        Fragment <|-- MypageFragment
+        Fragment <|-- FavoriteFragment
+        Fragment <|-- HistoryFragment
+        FragmentPagerAdapter <|-- MypageFragmentPagerAdapter
+        MypageFragment -- MypageFragmentPagerAdapter: 生成
+        MypageFragmentPagerAdapter *- FavoriteFragment: 所有
+        MypageFragmentPagerAdapter *- HistoryFragment: 所有
+    }
+    package result {
+        class BookDetailActivityv {
+        }
+        class SearchResultListActivity {
+        }
+        AppCompatActivity <|-- BookDetailActivityv
+        AppCompatActivity <|-- SearchResultListActivity
+    }
+    package search {
+        class SearchFragment {
+        }
+        class SearchConditionsFragment {
+        }
+        class SearchHistoryFragment {
+        }
+        class SearchFragmentPagerAdapter {
+            Fragment getItem()
+            int getCount()
+            CharSequence? getPageTitle()
+            void refresh()
+        }
+        Fragment <|-- SearchFragment
+        Fragment <|-- SearchConditionsFragment
+        Fragment <|-- SearchHistoryFragment
+        FragmentPagerAdapter <|-- SearchFragmentPagerAdapter
+        SearchFragment -- SearchFragmentPagerAdapter: 生成
+        SearchFragmentPagerAdapter *- SearchConditionsFragment: 所有
+        SearchFragmentPagerAdapter *- SearchHistoryFragment: 所有
+    }
+    package user {
+        class LoginActivity {
+        }
+        class EditUserActivity {
+        }
+        AppCompatActivity <|-- LoginActivity
+        AppCompatActivity <|-- EditUserActivity
+    }
+    package watch {
+        class WatchFragment {
+        }
+        class KeywordWatchFragment {
+        }
+        class ReleaseWatchFragment {
+        }
+        class WatchFragmentPagerAdapter {
+            Fragment getItem()
+            int getCount()
+            CharSequence? getPageTitle()
+            void refresh()
+        }
+        Fragment <|-- WatchFragment
+        Fragment <|-- KeywordWatchFragment
+        Fragment <|-- ReleaseWatchFragment
+        WatchFragment -- WatchFragmentPagerAdapter: 生成
+        WatchFragmentPagerAdapter *- KeywordWatchFragment: 所有
+        WatchFragmentPagerAdapter *- ReleaseWatchFragment: 所有
+    }
+}
+
+@enduml
