@@ -84,6 +84,7 @@ class BookSearchApiClient {
     private fun getToken(): String {
         // TODO: 初回ログイン時にDB登録しておいて、あとはDBから読むようにする（ログアウト時に削除）
         return "Bearer XXX"
+    }
 
     private fun getFcmToken(): String {
         // TODO: 初期化時に取得してDB登録しておく

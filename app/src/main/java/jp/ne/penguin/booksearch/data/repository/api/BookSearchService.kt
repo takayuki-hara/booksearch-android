@@ -9,7 +9,7 @@ import retrofit2.http.*
 
 interface BookSearchService {
     companion object {
-        const val BASE_URL = "http://booksearch-bunl25ft.herokuapp.com/"
+        const val BASE_URL = "https://booksearch-bunl25ft.herokuapp.com/"
     }
 
 
